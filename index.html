@@ -52,6 +52,12 @@
             -webkit-font-smoothing: antialiased;
         }
 
+        /* Prevent mobile horizontal overflow and ensure predictable sizing */
+        *, *::before, *::after { box-sizing: border-box; }
+        html, body { overflow-x: hidden; }
+
+        img, picture, video { max-width: 100%; height: auto; display: block; }
+
         /* Typography Scale and Spacing */
         h1, h2, h3, h4 { 
             font-weight: 600;
@@ -565,6 +571,20 @@
             font-weight: 700;
             align-self: center;
             margin-top: 0.6rem;
+        }
+
+        /* Small-screen tweaks to avoid overflow and center text */
+        @media (max-width: 600px) {
+            :root { --spacing-sm: 0.9rem; --spacing-md: 1.1rem; }
+            .container { padding-left: 1rem; padding-right: 1rem; }
+            header .container, footer .container { padding-left: 1rem; padding-right: 1rem; }
+            .hero .hero-content, #cta .container { padding-left: 0.5rem; padding-right: 0.5rem; }
+            /* Ensure hero text is centered on load */
+            .hero .hero-content h1, .hero .hero-content p { text-align: center; }
+            /* CTA card full bleed padding control */
+            #cta .cta-contact-card { padding-left: 0.9rem; padding-right: 0.9rem; }
+            /* Prevent any negative margins from causing overflow */
+            [style*="margin-left:-"], [style*="margin-right:-"] { margin-left: 0 !important; margin-right: 0 !important; }
         }
 
         /* Subtle Background Patterns */
