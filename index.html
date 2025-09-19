@@ -19,32 +19,434 @@
       gtag('js', new Date());
       gtag('config', 'UA-XXXXXX-X');
     </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        /* Clean Typography and Color Scheme */
-        body { font-family: 'Arial', sans-serif; margin: 0; padding: 0; background: #f8f8f8; color: #333; line-height: 1.6; }
-        h1, h2, h3 { font-weight: bold; }
-        a { text-decoration: none; color: #b5651d; }
-        button, .cta-button { background: #b5651d; color: #fff; border: none; padding: 15px 30px; font-size: 1.1rem; cursor: pointer; transition: background 0.3s ease; border-radius: 5px; }
-        button:hover, .cta-button:hover { background: #8c4a14; }
-        /* Subtle Gradients and Shadows */
-        .section { padding: 60px 0; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
-        .hero { background: linear-gradient(to bottom, #e0e0e0, #f8f8f8); text-align: center; }
-        /* Responsive Framework - Mobile-first */
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-        .grid { display: grid; grid-template-columns: 1fr; gap: 20px; }
+        /* Modern Typography and Color Scheme */
+        :root {
+            --primary: #b5651d;
+            --primary-dark: #8c4a14;
+            --text: #2d3338;
+            --text-light: #546270;
+            --background: #f8f9fa;
+            --white: #ffffff;
+            --spacing-xs: 0.5rem;
+            --spacing-sm: 1rem;
+            --spacing-md: 1.5rem;
+            --spacing-lg: 2rem;
+            --spacing-xl: 3rem;
+            --content-width-sm: 65ch;
+            --content-width: 780px;
+            --content-width-lg: 1200px;
+        }
+        
+        body { 
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: var(--background);
+            color: var(--text);
+            line-height: 1.7;
+            font-size: 1.125rem;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Typography Scale and Spacing */
+        h1, h2, h3, h4 { 
+            font-weight: 600;
+            line-height: 1.3;
+            margin: var(--spacing-lg) 0 var(--spacing-md);
+            letter-spacing: -0.02em;
+        }
+
+        h1 { font-size: clamp(2.5rem, 5vw, 3.5rem); }
+        h2 { font-size: clamp(2rem, 4vw, 2.5rem); }
+        h3 { font-size: clamp(1.5rem, 3vw, 1.75rem); }
+
+        p, ul, ol { 
+            margin-bottom: var(--spacing-md);
+            max-width: var(--content-width-sm);
+            color: var(--text-light);
+        }
+
+        a { 
+            text-decoration: none;
+            color: var(--primary);
+            transition: color 0.2s ease;
+        }
+        a:hover { color: var(--primary-dark); }
+
+        /* Button Styles */
+        button, .cta-button { 
+            background: var(--primary);
+            color: var(--white);
+            border: none;
+            padding: var(--spacing-sm) var(--spacing-lg);
+            font-size: 1.125rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        button:hover, .cta-button:hover { 
+            background: var(--primary-dark);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+        }
+
+        /* Section Styling and Visual Hierarchy */
+        .section { 
+            padding: var(--spacing-xl) 0;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            position: relative;
+        }
+        .section::before {
+            content: attr(data-section);
+            position: absolute;
+            top: var(--spacing-lg);
+            left: 0;
+            font-size: 0.875rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--primary);
+            opacity: 0.7;
+        }
+        .hero { 
+            background: linear-gradient(165deg, #f8f9fa 0%, #ffffff 100%);
+            text-align: center;
+            padding: calc(var(--spacing-xl) * 2) 0;
+            border-bottom: none;
+        }
+        
+        /* Enhanced Section Typography */
+        .section h2 {
+            position: relative;
+            display: inline-block;
+        }
+        .section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -0.5rem;
+            left: 0;
+            width: 3rem;
+            height: 3px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+        .hero h2 {
+            font-weight: 400;
+            color: var(--text-light);
+            max-width: var(--content-width);
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .hero h2::after {
+            display: none;
+        }
+
+        /* Feature Highlights */
+        .highlight {
+            font-size: 1.25rem;
+            color: var(--text);
+            font-weight: 500;
+            margin: var(--spacing-lg) 0;
+            padding-left: var(--spacing-md);
+            border-left: 3px solid var(--primary);
+        }
+
+        /* Emphasis Text */
+        .emphasis {
+            color: var(--primary);
+            font-weight: 500;
+        }
+
+        /* Modern Layout Components */
+        .container { 
+            width: 90%;
+            max-width: var(--content-width-lg);
+            margin: 0 auto;
+            padding: 0 var(--spacing-md);
+        }
+        .grid { 
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--spacing-lg);
+        }
+
+        /* Feature Cards */
+        .feature-card {
+            background: var(--white);
+            padding: var(--spacing-lg);
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .feature-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+        }
+        .feature-icon {
+            margin-bottom: var(--spacing-md);
+            padding: var(--spacing-sm);
+            background: rgba(181, 101, 29, 0.1);
+            border-radius: 12px;
+            width: fit-content;
+        }
+
+        /* Testimonial Cards */
+        .testimonial {
+            background: var(--white);
+            padding: var(--spacing-lg);
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            margin-bottom: var(--spacing-lg);
+            position: relative;
+        }
+        .testimonial-content {
+            position: relative;
+            padding-left: var(--spacing-lg);
+        }
+        .testimonial-content::before {
+            content: '"';
+            position: absolute;
+            left: -10px;
+            top: -20px;
+            font-size: 4rem;
+            color: var(--primary);
+            opacity: 0.2;
+            font-family: Georgia, serif;
+        }
+        .testimonial-avatar {
+            margin-bottom: var(--spacing-md);
+        }
+        .testimonial-name {
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: var(--spacing-xs);
+        }
+        .testimonial-rating {
+            color: var(--primary);
+            font-weight: 500;
+        }
+
+        /* Enhanced Form Design */
+        .contact-form {
+            background: var(--white);
+            padding: var(--spacing-xl);
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            max-width: var(--content-width);
+            margin: var(--spacing-xl) auto;
+        }
+        .form-group {
+            margin-bottom: var(--spacing-md);
+        }
+        .form-label {
+            display: block;
+            margin-bottom: var(--spacing-xs);
+            color: var(--text);
+            font-weight: 500;
+        }
+        .form-input {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 2px solid #eaecef;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.2s ease;
+        }
+        .form-input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(181, 101, 29, 0.1);
+        }
+        .form-input::placeholder {
+            color: #a0aec0;
+        }
+        textarea.form-input {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        /* Table Styling */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: var(--spacing-lg) 0;
+            background: var(--white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+        }
+        th, td {
+            padding: var(--spacing-sm) var(--spacing-md);
+            text-align: left;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+        th {
+            background: #f8f9fa;
+            font-weight: 600;
+            color: var(--text);
+        }
+        td {
+            color: var(--text-light);
+        }
+
+        /* Logo Grid */
+        .logo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: var(--spacing-lg);
+            align-items: center;
+            justify-items: center;
+            padding: var(--spacing-lg) 0;
+        }
+        .logo-grid img {
+            max-width: 150px;
+            transition: opacity 0.2s ease;
+        }
+        .logo-grid img:hover {
+            opacity: 1 !important;
+        }
+
+        /* Responsive Adjustments */
         @media (min-width: 769px) {
-            .hero h1 { font-size: 3.5rem; }
             .grid { grid-template-columns: repeat(3, 1fr); }
             .cta-button { width: auto; }
+            .container { width: 85%; }
         }
         @media (max-width: 768px) {
-            .hero h1 { font-size: 2.5rem; }
-            .cta-button { width: 100%; padding: 16px; }
+            body { font-size: 1rem; }
+            .cta-button { 
+                width: 100%;
+                padding: var(--spacing-sm);
+            }
+            .container { width: 95%; }
         }
-        /* Subtle Animations */
-        .fade-in { opacity: 0; transition: opacity 0.5s ease; }
-        .fade-in.visible { opacity: 1; }
-        img { max-width: 100%; height: auto; }
+
+        /* Enhanced Animations and Visual Effects */
+        img { 
+            max-width: 100%;
+            height: auto;
+            border-radius: 12px;
+            transition: transform 0.3s ease;
+        }
+        img:hover {
+            transform: scale(1.02);
+        }
+        
+        /* Fade In Animation */
+        .fade-in { 
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .fade-in.visible { 
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Staggered Animations for Grid Items */
+        .grid > * {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+        .grid > *:nth-child(1) { animation-delay: 0.1s; }
+        .grid > *:nth-child(2) { animation-delay: 0.2s; }
+        .grid > *:nth-child(3) { animation-delay: 0.3s; }
+        .grid > *:nth-child(4) { animation-delay: 0.4s; }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Smooth Scroll Behavior */
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: var(--spacing-xl);
+        }
+
+        /* Interactive Elements */
+        .interactive {
+            transition: all 0.3s ease;
+        }
+        .interactive:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        /* Hover Effects */
+        .hover-lift {
+            transition: transform 0.2s ease;
+        }
+        .hover-lift:hover {
+            transform: translateY(-2px);
+        }
+        
+        /* Button Animations */
+        .cta-button::after {
+            content: '→';
+            margin-left: 8px;
+            transition: transform 0.2s ease;
+            display: inline-block;
+        }
+        .cta-button:hover::after {
+            transform: translateX(4px);
+        }
+
+        /* Section Transitions */
+        .section {
+            transition: background-color 0.3s ease;
+        }
+        .section:hover {
+            background-color: rgba(255,255,255,0.5);
+        }
+
+        /* Subtle Background Patterns */
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, var(--primary) 0.5%, transparent 0.5%);
+            background-size: 30px 30px;
+            opacity: 0.03;
+            pointer-events: none;
+        }
+
+        /* Loading States */
+        .loading {
+            position: relative;
+            overflow: hidden;
+        }
+        .loading::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(255,255,255,0.2),
+                transparent
+            );
+            animation: loading 1.5s infinite;
+        }
+        @keyframes loading {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
     /* Accessibility helpers */
     .visually-hidden { position: absolute !important; height: 1px; width: 1px; overflow: hidden; clip: rect(1px, 1px, 1px, 1px); white-space: nowrap; }
     /* Focus styles for keyboard users */
@@ -182,7 +584,7 @@
         <div class="container">
             <h2>Features That Transform Your Home</h2>
             <div class="grid">
-                <div>
+                <div class="feature-card interactive">
                     <!-- Feature Icons -->
                     <div class="feature-icon">
                         <!-- 64x64 feature icons - simple, consistent style -->
@@ -248,12 +650,16 @@
         <div class="container">
             <h2>Real Results from Real Customers</h2>
             <p>Before: Cracked chimney causing leaks; After: Fully restored with new crown, no issues for years – "Saved us from major water damage!"</p>
-            <div class="testimonial">
+            <div class="testimonial hover-lift">
                 <div class="testimonial-avatar">
                     <!-- 80x80 customer photos - professional headshots, rounded -->
                     <img src="https://placehold.co/80x80?text=CH" alt="Corey H." style="border-radius: 50%; border: 3px solid #fff;" width="80" height="80" loading="lazy">
                 </div>
-                <p>"Jason, Matt and crew came to do a crown cap replacement on our large 1970s chimney. Everything from the demo to the brick replacement and cap replacement was top notch. When they finished the worksite was cleaned like they were never there." – Corey H., 5 Stars.</p>
+                <div class="testimonial-content">
+                    <p>"Jason, Matt and crew came to do a crown cap replacement on our large 1970s chimney. Everything from the demo to the brick replacement and cap replacement was top notch. When they finished the worksite was cleaned like they were never there."</p>
+                    <div class="testimonial-name">Corey H.</div>
+                    <div class="testimonial-rating">★★★★★ 5.0</div>
+                </div>
             </div>
             <div class="testimonial">
                 <div class="testimonial-avatar">
