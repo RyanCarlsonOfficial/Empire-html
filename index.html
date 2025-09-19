@@ -117,8 +117,28 @@
         .hero { 
             background: linear-gradient(165deg, #f8f9fa 0%, #ffffff 100%);
             text-align: center;
-            padding: calc(var(--spacing-xl) * 2) 0;
+            padding: calc(var(--spacing-xl) * 1.5) 0;
             border-bottom: none;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero-image-container {
+            margin: var(--spacing-lg) auto;
+            max-width: 1200px;
+            position: relative;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        .hero-image-container img {
+            display: block;
+            width: 100%;
+            height: auto;
+            border-radius: 16px;
+            transition: transform 0.3s ease;
+        }
+        .hero-image-container:hover img {
+            transform: scale(1.02);
         }
         
         /* Enhanced Section Typography */
@@ -390,6 +410,33 @@
             transform: translateY(-2px);
         }
         
+        /* Credentials Banner */
+        .credentials-banner {
+            background: var(--white);
+            padding: var(--spacing-sm) var(--spacing-md);
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            margin: var(--spacing-md) auto;
+            max-width: fit-content;
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+        .credentials-banner span {
+            display: inline-flex;
+            align-items: center;
+        }
+        .credentials-banner span::before {
+            content: '•';
+            margin: 0 var(--spacing-sm);
+            color: var(--primary);
+        }
+        .credentials-banner span:first-child::before {
+            display: none;
+        }
+        
         /* Button Animations */
         .cta-button::after {
             content: '→';
@@ -456,8 +503,63 @@
         /* Form Optimization */
         form { display: flex; flex-direction: column; gap: 10px; }
         input, textarea { padding: 10px; border: 1px solid #ccc; border-radius: 5px; }
-        /* Navigation Anchors */
-        nav ul { list-style: none; padding: 0; display: flex; justify-content: center; gap: 20px; }
+        /* Enhanced Navigation Styles */
+        .main-nav {
+            background: var(--white);
+            padding: var(--spacing-sm) 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: var(--content-width-lg);
+            margin: 0 auto;
+            padding: 0 var(--spacing-md);
+        }
+        .nav-logo {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--primary);
+            text-decoration: none;
+        }
+        .nav-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            gap: var(--spacing-md);
+        }
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1rem;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            transition: all 0.2s ease;
+        }
+        .nav-links a:hover {
+            color: var(--primary);
+            background: rgba(181, 101, 29, 0.1);
+        }
+        .nav-cta {
+            background: var(--primary);
+            color: var(--white) !important;
+            padding: 0.5rem 1.25rem !important;
+        }
+        .nav-cta:hover {
+            background: var(--primary-dark) !important;
+            transform: translateY(-1px);
+        }
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+        }
         /* Social Sharing */
         .social-share { display: flex; gap: 10px; justify-content: center; }
         .social-share a { background: #ccc; padding: 10px; border-radius: 50%; }
@@ -479,21 +581,19 @@
 </head>
 <body>
     <a class="visually-hidden" href="#main-content">Skip to content</a>
-    <!-- Navigation for Smooth Scrolling -->
-    <nav aria-label="Primary navigation">
-        <ul>
-            <li><a href="#hero">Home</a></li>
-            <li><a href="#social-proof">Proof</a></li>
-            <li><a href="#problems">Problems</a></li>
-            <li><a href="#solution">Solution</a></li>
-            <li><a href="#features">Features</a></li>
-            <li><a href="#story">Story</a></li>
-            <li><a href="#detailed-proof">Testimonials</a></li>
-            <li><a href="#offer">Offer</a></li>
-            <li><a href="#urgency">Urgency</a></li>
-            <li><a href="#objections">FAQ</a></li>
-            <li><a href="#cta">Get Started</a></li>
-        </ul>
+    <!-- Enhanced Navigation -->
+    <nav class="main-nav" aria-label="Primary navigation">
+        <div class="nav-container">
+            <a href="#" class="nav-logo">Empire Stone</a>
+            <ul class="nav-links">
+                <li><a href="#services">Services</a></li>
+                <li><a href="#testimonials">Reviews</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#faq">FAQ</a></li>
+                <li><a href="#quote" class="nav-cta">Get Quote</a></li>
+            </ul>
+        </div>
     </nav>
 
     <main id="main-content">
@@ -503,12 +603,25 @@
             <h1>Is Your Home's Stonework Showing Winter Damage?</h1>
             <h2>We repair chimneys, restore stone siding, and fix cracked concrete—quality masonry that lasts, with minimal disruption.</h2>
             <!-- Hero Section Image -->
-            <div class="hero-image-placeholder">
-                <!-- 1920x1080 hero image - before-and-after showing weathered home transformed with pristine stone siding and chimney, high-contrast split view -->
-                <img src="https://images.picsum.photos/id/1025/1200/675.jpg?hmac=placeholder" alt="Before and after: stone siding and chimney" style="border-radius: 12px;" width="1200" height="675" loading="eager">
+            <div class="hero-image-container">
+                <picture>
+                    <source srcset="https://images.unsplash.com/photo-1518736346281-76582168a642?w=1200&h=675&fit=crop" media="(min-width: 768px)">
+                    <source srcset="https://images.unsplash.com/photo-1518736346281-76582168a642?w=800&h=500&fit=crop" media="(min-width: 400px)">
+                    <img 
+                        src="https://images.unsplash.com/photo-1518736346281-76582168a642?w=400&h=300&fit=crop" 
+                        alt="Beautiful stone masonry work on a modern home exterior" 
+                        width="1200" 
+                        height="675" 
+                        loading="eager"
+                    >
+                </picture>
             </div>
             <button class="cta-button">Get Your Free Quote Today – Limited Slots Available This Season!</button>
-            <p>Licensed & Insured (IR678484) | 100% Satisfaction Guarantee | Family-Owned Since 2010</p>
+            <div class="credentials-banner">
+                <span>Licensed & Insured (IR678484)</span>
+                <span>100% Satisfaction Guarantee</span>
+                <span>Family-Owned Since 2010</span>
+            </div>
         </div>
     </section>
 
