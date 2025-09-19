@@ -505,11 +505,12 @@
         #cta .container h2 { color: var(--white); text-align: center; }
         #cta .container p { color: var(--white); text-align: center; max-width: 60ch; }
         #cta .cta-button { background: var(--white); color: var(--primary); }
-        /* Centered contact card inside CTA */
-        .cta-contact-card {
+
+        /* Centered contact card inside CTA - improved centering for labels/inputs */
+        #cta .cta-contact-card {
             width: 100%;
             max-width: 520px;
-            background: rgba(255,255,255,0.95);
+            background: rgba(255,255,255,0.96);
             padding: var(--spacing-lg);
             border-radius: 12px;
             box-shadow: 0 8px 24px rgba(0,0,0,0.12);
@@ -518,9 +519,53 @@
             display: flex;
             flex-direction: column;
             gap: var(--spacing-sm);
+            align-items: center; /* center children horizontally */
         }
-        .cta-contact-card .form-input { border: 1px solid #e6e9ee; }
-        .cta-contact-card button[type="submit"] { align-self: center; margin-top: var(--spacing-md); }
+
+        /* Keep form groups full-width but center their contents */
+        #cta .cta-contact-card .form-group {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* center label + input */
+            gap: 0.35rem;
+            margin-bottom: 0.6rem;
+        }
+
+        /* Center labels */
+        #cta .cta-contact-card .form-label {
+            width: 100%;
+            text-align: center;
+            font-size: 0.95rem;
+            color: #4a4a4a;
+        }
+
+        /* Limit input width so fields appear centered within the card */
+        #cta .cta-contact-card .form-input {
+            width: 92%;
+            max-width: 420px;
+            padding: 0.6rem 0.75rem;
+            border-radius: 6px;
+            border: 1px solid #e6e9ee;
+            font-size: 0.95rem;
+            box-sizing: border-box;
+            background: #fff;
+        }
+
+        #cta .cta-contact-card textarea.form-input { min-height: 120px; }
+
+        /* Make the submit button a compact, centered pill */
+        #cta .cta-contact-card .cta-button {
+            display: inline-block;
+            width: auto;
+            padding: 0.8rem 1.6rem;
+            border-radius: 8px;
+            background: var(--primary);
+            color: var(--white);
+            font-weight: 700;
+            align-self: center;
+            margin-top: 0.6rem;
+        }
 
         /* Subtle Background Patterns */
         .hero::before {
