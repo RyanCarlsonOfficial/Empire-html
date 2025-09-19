@@ -45,6 +45,10 @@
         .fade-in { opacity: 0; transition: opacity 0.5s ease; }
         .fade-in.visible { opacity: 1; }
         img { max-width: 100%; height: auto; }
+    /* Accessibility helpers */
+    .visually-hidden { position: absolute !important; height: 1px; width: 1px; overflow: hidden; clip: rect(1px, 1px, 1px, 1px); white-space: nowrap; }
+    /* Focus styles for keyboard users */
+    :focus { outline: 3px solid #ffd7b8; outline-offset: 3px; }
         /* Countdown Timer */
         #countdown { font-size: 1.5rem; color: #b5651d; }
         /* Form Optimization */
@@ -72,8 +76,9 @@
     </script>
 </head>
 <body>
+    <a class="visually-hidden" href="#main-content">Skip to content</a>
     <!-- Navigation for Smooth Scrolling -->
-    <nav>
+    <nav aria-label="Primary navigation">
         <ul>
             <li><a href="#hero">Home</a></li>
             <li><a href="#social-proof">Proof</a></li>
@@ -89,15 +94,16 @@
         </ul>
     </nav>
 
+    <main id="main-content">
     <!-- 1. HERO SECTION -->
     <section id="hero" class="hero section fade-in">
         <div class="container">
-            <h1>Is Your Home's Stonework Crumbling Under Minnesota's Harsh Winters?</h1>
-            <h2>Don't let damaged chimneys, fading siding, or cracked concrete drain your property's value—discover how our expert masonry restores beauty and durability without the usual hassle.</h2>
+            <h1>Is Your Home's Stonework Showing Winter Damage?</h1>
+            <h2>We repair chimneys, restore stone siding, and fix cracked concrete—quality masonry that lasts, with minimal disruption.</h2>
             <!-- Hero Section Image -->
             <div class="hero-image-placeholder">
                 <!-- 1920x1080 hero image - before-and-after showing weathered home transformed with pristine stone siding and chimney, high-contrast split view -->
-                <img src="placeholder-hero.jpg" alt="Hero Image" style="border-radius: 12px;">
+                <img src="https://images.picsum.photos/id/1025/1200/675.jpg?hmac=placeholder" alt="Before and after: stone siding and chimney" style="border-radius: 12px;" width="1200" height="675" loading="eager">
             </div>
             <button class="cta-button">Get Your Free Quote Today – Limited Slots Available This Season!</button>
             <p>Licensed & Insured (IR678484) | 100% Satisfaction Guarantee | Family-Owned Since 2010</p>
@@ -109,21 +115,21 @@
         <div class="container">
             <h2>Trusted by Homeowners and Industry Leaders</h2>
             <!-- Customer Logos -->
-            <div class="logo-grid grid">
+            <div class="logo-grid grid" role="list">
                 <!-- 200x100 customer logos - transparent PNG, minimal design -->
-                <img src="logo-aggregate-industries.png" alt="Aggregate Industries" style="filter: grayscale(100%); opacity: 0.7;">
-                <img src="logo-boulder-creek.png" alt="Boulder Creek Stone Products" style="filter: grayscale(100%); opacity: 0.7;">
-                <img src="logo-hebron-brick.png" alt="Hebron Brick Company" style="filter: grayscale(100%); opacity: 0.7;">
-                <img src="logo-lafarge.png" alt="LaFarge North America" style="filter: grayscale(100%); opacity: 0.7;">
-                <img src="logo-quickrete.png" alt="Quickrete" style="filter: grayscale(100%); opacity: 0.7;">
-                <img src="logo-robinson-brick.png" alt="Robinson Brick Company" style="filter: grayscale(100%); opacity: 0.7;">
+                <img src="https://placehold.co/200x100?text=Aggregate" alt="Aggregate Industries" style="filter: grayscale(100%); opacity: 0.7;" width="200" height="100" loading="lazy">
+                <img src="https://placehold.co/200x100?text=Boulder+Creek" alt="Boulder Creek Stone Products" style="filter: grayscale(100%); opacity: 0.7;" width="200" height="100" loading="lazy">
+                <img src="https://placehold.co/200x100?text=Hebron+Brick" alt="Hebron Brick Company" style="filter: grayscale(100%); opacity: 0.7;" width="200" height="100" loading="lazy">
+                <img src="https://placehold.co/200x100?text=LaFarge" alt="LaFarge North America" style="filter: grayscale(100%); opacity: 0.7;" width="200" height="100" loading="lazy">
+                <img src="https://placehold.co/200x100?text=Quickrete" alt="Quickrete" style="filter: grayscale(100%); opacity: 0.7;" width="200" height="100" loading="lazy">
+                <img src="https://placehold.co/200x100?text=Robinson" alt="Robinson Brick Company" style="filter: grayscale(100%); opacity: 0.7;" width="200" height="100" loading="lazy">
             </div>
-            <p>Over 142 Happy Homeowners Served – See Why We're Rated 5.0/5 Stars!</p>
+            <p>Over 142 satisfied homeowners — rated 5.0/5 stars.</p>
             <!-- Video Testimonials -->
             <div class="video-placeholder">
                 <!-- Use a proper <video> element for local MP4 files or a valid embed URL for iframes -->
-                <video width="600" height="400" controls muted playsinline>
-                    <source src="placeholder-video1.mp4" type="video/mp4">
+                <video width="600" height="400" controls muted playsinline preload="metadata">
+                    <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>
             </div>
@@ -145,17 +151,17 @@
             <!-- Visual Problem Illustration -->
             <div class="problem-visual">
                 <!-- 800x400 split-image - cracked chimney vs. ignored decay, dramatic red highlights -->
-                <img src="problem-placeholder.jpg" alt="Problem Illustration" style="border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.1);">
+                <img src="https://images.picsum.photos/id/1018/800/400.jpg?hmac=placeholder" alt="Cracked chimney before repair" style="border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.1);" width="800" height="400" loading="lazy">
             </div>
-            <p>Imagine the stress of a leaking roof from a neglected chimney during a blizzard, or the embarrassment of hosting guests with a rundown exterior—your home should be a source of pride, not worry.</p>
+            <p>A neglected chimney can lead to leaks during a blizzard, and cracked siding hurts curb appeal—let us protect your home's value and comfort.</p>
         </div>
     </section>
 
     <!-- 4. SOLUTION MECHANISM -->
     <section id="solution" class="section">
         <div class="container">
-            <h2>Our Proven Approach to Lasting Masonry Solutions</h2>
-            <p>As a family-owned specialist with 13+ years in stone and brick, we use premium materials from top partners and meticulous craftsmanship to deliver lasting results tailored to MN's climate.</p>
+            <h2>How We Deliver Lasting Masonry</h2>
+            <p>Family-owned with 13+ years of experience. We use premium materials and proven techniques designed for Minnesota weather.</p>
             <ol>
                 <li>Free on-site assessment to identify issues.</li>
                 <li>Custom plan with material recommendations.</li>
@@ -166,7 +172,7 @@
             <!-- Process Diagrams -->
             <div class="process-visual">
                 <!-- 800x400 process illustration - step-by-step workflow -->
-                <img src="process-placeholder.jpg" alt="How It Works" style="border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.1);">
+                <img src="https://images.picsum.photos/id/1003/800/400.jpg?hmac=placeholder" alt="How the process works" style="border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.1);" width="800" height="400" loading="lazy">
             </div>
         </div>
     </section>
@@ -180,28 +186,28 @@
                     <!-- Feature Icons -->
                     <div class="feature-icon">
                         <!-- 64x64 feature icons - simple, consistent style -->
-                        <img src="icon-siding.svg" alt="Stone Siding Icon" style="width: 64px; height: 64px;">
+                        <img src="https://placehold.co/64x64?text=S" alt="Stone Siding Icon" style="width: 64px; height: 64px;" width="64" height="64" loading="lazy">
                     </div>
                     <h3>Stone Siding Installs</h3>
                     <p>Boosts curb appeal and insulation, making your home warmer and more valuable.</p>
                 </div>
                 <div>
                     <div class="feature-icon">
-                        <img src="icon-chimney.svg" alt="Chimney Icon" style="width: 64px; height: 64px;">
+                        <img src="https://placehold.co/64x64?text=C" alt="Chimney Icon" style="width: 64px; height: 64px;" width="64" height="64" loading="lazy">
                     </div>
                     <h3>Chimney Builds/Repairs</h3>
                     <p>Prevents leaks and fire hazards, giving you peace of mind through brutal winters.</p>
                 </div>
                 <div>
                     <div class="feature-icon">
-                        <img src="icon-tuckpointing.svg" alt="Tuckpointing Icon" style="width: 64px; height: 64px;">
+                        <img src="https://placehold.co/64x64?text=T" alt="Tuckpointing Icon" style="width: 64px; height: 64px;" width="64" height="64" loading="lazy">
                     </div>
                     <h3>Tuckpointing</h3>
                     <p>Restores brick integrity, extending your structure's life by decades without major overhauls.</p>
                 </div>
                 <div>
                     <div class="feature-icon">
-                        <img src="icon-concrete.svg" alt="Concrete Icon" style="width: 64px; height: 64px;">
+                        <img src="https://placehold.co/64x64?text=CF" alt="Concrete Icon" style="width: 64px; height: 64px;" width="64" height="64" loading="lazy">
                     </div>
                     <h3>Concrete Flatwork</h3>
                     <p>Creates safe, durable surfaces that enhance outdoor living and resist cracking.</p>
@@ -231,7 +237,7 @@
             <!-- Founder Photo -->
             <div class="founder-photo">
                 <!-- 400x400 founder photo - professional headshot, rounded corners -->
-                <img src="founder-placeholder.jpg" alt="Jason, Founder" style="border-radius: 50%; box-shadow: 0 4px 20px rgba(0,0,0,0.1); width: 400px; height: 400px;">
+                <img src="https://images.picsum.photos/id/1005/400/400.jpg?hmac=placeholder" alt="Jason, Founder" style="border-radius: 50%; box-shadow: 0 4px 20px rgba(0,0,0,0.1); width: 400px; height: 400px;" width="400" height="400" loading="lazy">
             </div>
             <p>13+ years experience | Licensed Masonry Contractor (IR678484) | Trusted by 142+ homeowners with perfect 5-star ratings.</p>
         </div>
@@ -245,19 +251,19 @@
             <div class="testimonial">
                 <div class="testimonial-avatar">
                     <!-- 80x80 customer photos - professional headshots, rounded -->
-                    <img src="avatar-corey.jpg" alt="Corey H." style="border-radius: 50%; border: 3px solid #fff;">
+                    <img src="https://placehold.co/80x80?text=CH" alt="Corey H." style="border-radius: 50%; border: 3px solid #fff;" width="80" height="80" loading="lazy">
                 </div>
                 <p>"Jason, Matt and crew came to do a crown cap replacement on our large 1970s chimney. Everything from the demo to the brick replacement and cap replacement was top notch. When they finished the worksite was cleaned like they were never there." – Corey H., 5 Stars.</p>
             </div>
             <div class="testimonial">
                 <div class="testimonial-avatar">
-                    <img src="avatar-anon.jpg" alt="Anonymous" style="border-radius: 50%; border: 3px solid #fff;">
+                    <img src="https://placehold.co/80x80?text=A" alt="Anonymous" style="border-radius: 50%; border: 3px solid #fff;" width="80" height="80" loading="lazy">
                 </div>
                 <p>"They were super friendly and enjoyable to have around for a week. Their work was flawless, I couldn't have been more impressed with their tuck pointing work." – Anonymous, 5 Stars.</p>
             </div>
             <div class="testimonial">
                 <div class="testimonial-avatar">
-                    <img src="avatar-john.jpg" alt="John H." style="border-radius: 50%; border: 3px solid #fff;">
+                    <img src="https://placehold.co/80x80?text=JH" alt="John H." style="border-radius: 50%; border: 3px solid #fff;" width="80" height="80" loading="lazy">
                 </div>
                 <p>"Our backyard patio and small front stoop landing area needed replacement... We highly recommend this company!!!" – John H., 5 Stars.</p>
             </div>
@@ -269,8 +275,8 @@
     <!-- 8. VALUE STACK & OFFER -->
     <section id="offer" class="section">
         <div class="container">
-            <h2>Our Irresistible Offer</h2>
-            <p>Custom Masonry Project – Starting at $2,500 for basic repairs (e.g., $4,997 for full chimney rebuild).</p>
+            <h2>Special Offer</h2>
+            <p>Custom masonry projects starting at $2,500. Full chimney rebuild estimates available on request.</p>
             <ul>
                 <li>Free site assessment ($200 value)</li>
                 <li>10% off materials from our premium partners</li>
@@ -285,8 +291,8 @@
     <!-- 9. URGENCY & SCARCITY -->
     <section id="urgency" class="section">
         <div class="container">
-            <h2>Act Fast – Opportunities Are Limited!</h2>
-            <p>Book by end of month for 10% off – <span id="countdown"></span></p>
+            <h2>Limited-Time Discount</h2>
+            <p>Book within the next 30 days for 10% off — <span id="countdown" aria-live="polite"></span></p>
             <script>
                 // Simple Countdown Timer (dynamic end date: 30 days from now)
                 (function() {
@@ -365,11 +371,19 @@
             <h2>Ready to Restore Your Home?</h2>
             <p>Don't wait for winter damage to worsen – Slots filling fast!</p>
             <button class="cta-button" style="background: #fff; color: #b5651d;">Call Now: (763) 568-9309</button>
-            <form id="quote-form">
-                <input type="text" placeholder="Name" required>
-                <input type="email" placeholder="Email" required>
-                <input type="tel" placeholder="Phone" required>
-                <textarea placeholder="Project Details"></textarea>
+            <form id="quote-form" aria-label="Request a free quote">
+                <label class="visually-hidden" for="q-name">Name</label>
+                <input id="q-name" type="text" placeholder="Name" required>
+
+                <label class="visually-hidden" for="q-email">Email</label>
+                <input id="q-email" type="email" placeholder="Email" required>
+
+                <label class="visually-hidden" for="q-phone">Phone</label>
+                <input id="q-phone" type="tel" placeholder="Phone" required>
+
+                <label class="visually-hidden" for="q-details">Project Details</label>
+                <textarea id="q-details" placeholder="Project Details"></textarea>
+
                 <button type="submit">Schedule Free Quote</button>
             </form>
             <script>
