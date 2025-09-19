@@ -557,8 +557,20 @@
         }
         @media (max-width: 768px) {
             .nav-links {
-                display: none;
+                display: flex;
+                position: absolute;
+                top: 64px;
+                right: 16px;
+                background: var(--white);
+                flex-direction: column;
+                gap: 0;
+                padding: var(--spacing-sm);
+                border-radius: 8px;
+                box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+                display: none; /* hidden by default, toggled by JS */
             }
+            .nav-links[data-visible="true"] { display: flex; }
+            .nav-toggle { display: inline-flex; background: none; border: none; font-size: 1.25rem; cursor: pointer; }
         }
         /* Social Sharing */
         .social-share { display: flex; gap: 10px; justify-content: center; }
@@ -585,7 +597,8 @@
     <nav class="main-nav" aria-label="Primary navigation">
         <div class="nav-container">
             <a href="#hero" class="nav-logo">Empire Stone</a>
-            <ul class="nav-links">
+            <button class="nav-toggle" aria-expanded="false" aria-controls="primary-navigation" aria-label="Toggle menu">☰</button>
+            <ul id="primary-navigation" class="nav-links" data-visible="false">
                 <li><a href="#features">Services</a></li>
                 <li><a href="#detailed-proof">Reviews</a></li>
                 <li><a href="#social-proof">Gallery</a></li>
@@ -616,7 +629,7 @@
                     >
                 </picture>
             </div>
-            <button class="cta-button">Get Your Free Quote Today – Limited Slots Available This Season!</button>
+            <a href="#cta" class="cta-button">Get Your Free Quote Today – Limited Slots Available This Season!</a>
             <div class="credentials-banner">
                 <span>Licensed & Insured (IR678484)</span>
                 <span>100% Satisfaction Guarantee</span>
@@ -931,6 +944,30 @@
         window.addEventListener('load', () => {
             document.querySelectorAll('.fade-in').forEach(el => el.classList.add('visible'));
         });
+    </script>
+    <script>
+        // Mobile nav toggle
+        (function(){
+            const navToggle = document.querySelector('.nav-toggle');
+            const navLinks = document.getElementById('primary-navigation');
+            if (!navToggle || !navLinks) return;
+
+            navToggle.addEventListener('click', () => {
+                const isVisible = navLinks.getAttribute('data-visible') === 'true';
+                navLinks.setAttribute('data-visible', String(!isVisible));
+                navToggle.setAttribute('aria-expanded', String(!isVisible));
+            });
+
+            // Close menu when a link is clicked (mobile)
+            navLinks.querySelectorAll('a').forEach(a => {
+                a.addEventListener('click', () => {
+                    if (window.innerWidth <= 768) {
+                        navLinks.setAttribute('data-visible', 'false');
+                        navToggle.setAttribute('aria-expanded', 'false');
+                    }
+                });
+            });
+        })();
     </script>
 </body>
 </html>
